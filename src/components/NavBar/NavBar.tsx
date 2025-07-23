@@ -21,6 +21,9 @@ export default function NavBar() {
       <Link href={"/users/server-version"} className="hover:text-amber-300">
         Users server
       </Link>
+      <Link href={"/products/client-version"} className="hover:text-amber-300">
+        Products
+      </Link>
     </nav>
   );
 }

@@ -1,3 +1,4 @@
+import style from "./page.module.css";
 export default function Tennis() {
   return (
     <div className="flex flex-col items-center p-8 gap-10">
@@ -16,9 +17,11 @@ export default function Tennis() {
       </ul>
 
       <p className="text-md text-gray-300 text-center">
-        <span className="font-semibold">Who is this for?</span> Ideal for
-        beginners and recreational players who want to improve their tennis
-        skills and game awareness.
+        <span className={`font-semibold ${style.custom}`}>
+          Who is this for?
+        </span>{" "}
+        Ideal for beginners and recreational players who want to improve their
+        tennis skills and game awareness.
       </p>
     </div>
   );

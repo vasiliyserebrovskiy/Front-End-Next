@@ -1,4 +1,6 @@
 import { User } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
 
 //by default we work with server component
 const UsersServerVersion = async () => {
@@ -29,9 +31,30 @@ const UsersServerVersion = async () => {
   //   console.log(users); // will be printed on server
 
   return (
-    <div>
+    <div className="flex gap-10  flex-wrap">
       {users.map((user: User) => (
-        <li key={user.id}>{user.name}</li>
+        <ul
+          key={user.id}
+          className="flex flex-col justify-center items-center list-none border rounded-lg p-4 m-4"
+        >
+          <li className="flex flex-col items-center p-2 gap-4">
+            <p>{user.name}</p>
+            <Image
+              src={user.avatar}
+              alt={"User " + user.name}
+              width={150}
+              height={200}
+              className="w-40 h-auto rounded-lg"
+              unoptimized
+            />
+            <Link
+              href={`/users/server-version/${user.id}`}
+              className="text-blue-700 hover:text-yellow-500 "
+            >
+              Details
+            </Link>
+          </li>
+        </ul>
       ))}
     </div>
   );

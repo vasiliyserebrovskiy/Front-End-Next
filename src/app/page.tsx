@@ -15,7 +15,7 @@ export default function Home() {
         started!
       </p>
       <p className="bg-background text-foreground">Hello Next</p>
-      <p className="bg-amber-400 dark:bg-red-600">Example</p>
+      {/* <p className="bg-amber-400 dark:bg-red-600">Example</p> */}
     </div>
   );
 }

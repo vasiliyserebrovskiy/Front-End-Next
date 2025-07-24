@@ -35,7 +35,7 @@ const UsersServerVersion = async () => {
       {users.map((user: User) => (
         <ul
           key={user.id}
-          className="flex flex-col justify-center items-center list-none border rounded-lg p-4 m-4"
+          className="flex flex-col justify-center items-center list-none border-2 border-green-600 rounded-lg p-4 m-4"
         >
           <li className="flex flex-col items-center p-2 gap-4">
             <p>{user.name}</p>

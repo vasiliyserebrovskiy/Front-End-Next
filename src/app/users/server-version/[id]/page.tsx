@@ -19,7 +19,7 @@ export default async function UserDetails({
 
   return (
     <section className="flex justify-center">
-      <div className="flex flex-col justify-center items-center gap-5 border rounded-lg p-4 m-4 w-150">
+      <div className="flex flex-col justify-center items-center gap-5 border-2 border-green-600 rounded-lg p-4 m-4 w-150">
         <h2>User details</h2>
         <p>{user.name}</p>
         <Image

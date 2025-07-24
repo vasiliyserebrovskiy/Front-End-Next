@@ -14,6 +14,8 @@ export default function Home() {
         👉 Browse our courses or head over to the Sports Courses section to get
         started!
       </p>
+      <p className="bg-background text-foreground">Hello Next</p>
+      <p className="bg-amber-400 dark:bg-red-600">Example</p>
     </div>
   );
 }

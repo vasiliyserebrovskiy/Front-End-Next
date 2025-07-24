@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggler from "../ThemeToggler/ThemeToggler";
 
 export default function NavBar() {
   return (
@@ -24,6 +25,7 @@ export default function NavBar() {
       <Link href={"/products/client-version"} className="hover:text-amber-300">
         Products
       </Link>
+      <ThemeToggler />
     </nav>
   );
 }

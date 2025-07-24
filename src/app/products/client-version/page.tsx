@@ -32,7 +32,7 @@ const ProductsClientVersion = () => {
 
   return (
     <div className={style.mainDiv}>
-      <h2>Products list</h2>
+      <h2>Products client list</h2>
       {error ? (
         <p>error</p>
       ) : (

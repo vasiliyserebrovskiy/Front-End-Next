@@ -13,7 +13,7 @@ export const ProductsServerVersion = async () => {
 
   return (
     <div className={style.mainDiv}>
-      <h2>Products list</h2>
+      <h2>Products server list</h2>
       <div className={style.productsDiv}>
         <ul>
           {products.map((p) => (

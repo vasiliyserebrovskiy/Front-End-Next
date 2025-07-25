@@ -7,7 +7,7 @@ export interface User {
   avatar: string;
 }
 
-interface Category {
+export interface Category {
   id: number;
   name: string;
   image: string;
@@ -21,5 +21,13 @@ export interface Product {
   price: number;
   description: string;
   category: Category;
+  images: string[];
+}
+
+export interface Product {
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
   images: string[];
 }

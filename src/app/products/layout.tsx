@@ -20,6 +20,9 @@ export default function ProductsLayout({
         >
           Products server
         </Link>
+        <Link href={"/products/create"} className="hover:text-amber-300">
+          Create product
+        </Link>
       </nav>
       {children}
     </>

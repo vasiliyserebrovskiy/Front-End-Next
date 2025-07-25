@@ -1,6 +1,8 @@
-import React from "react";
+export default async function About() {
+  const BASE_URL = process.env.BASE_URL;
+  const res = await fetch(`${BASE_URL}/api/hello`);
+  const { message } = await res.json();
 
-export default function About() {
   return (
     <div className="flex flex-col items-center p-8 gap-10">
       <h2 className="text-2xl font-bold text-center mb-4">About the Project</h2>
@@ -20,6 +22,7 @@ export default function About() {
         ✅ Flexible learning at your own pace
         <br />✅ Community-driven support and progress tracking
       </p>
+      <p>{message}</p>
     </div>
   );
 }

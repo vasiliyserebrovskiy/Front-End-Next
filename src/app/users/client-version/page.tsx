@@ -1,6 +1,7 @@
 "use client";
 import { User } from "@/types";
 import { useEffect, useState } from "react";
+import UserCard from "@/components/UserCard/UserCard";
 
 export default function UsersClientVersion() {
   const [users, setUsers] = useState<User[]>([]);
@@ -18,9 +19,9 @@ export default function UsersClientVersion() {
     setUsers(arr);
   }
   return (
-    <div>
+    <div className="flex gap-10  flex-wrap justify-center">
       {users.map((user) => (
-        <li key={user.id}>{user.name}</li>
+        <UserCard user={user} key={user.id} />
       ))}
     </div>
   );

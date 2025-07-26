@@ -17,19 +17,13 @@ export default function NavBar() {
         Settings
       </Link>
       <Link href={"/users/client-version"} className="hover:text-amber-300">
-        Users client
-      </Link>
-      <Link href={"/users/server-version"} className="hover:text-amber-300">
-        Users server
+        Users
       </Link>
       <Link href={"/products/client-version"} className="hover:text-amber-300">
         Products
       </Link>
       <Link href={"/categories"} className="hover:text-amber-300">
         Categories
-      </Link>
-      <Link href={"/categories/create"} className="hover:text-amber-300">
-        Create categories
       </Link>
       <ThemeToggler />
     </nav>

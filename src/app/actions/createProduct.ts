@@ -12,21 +12,10 @@ export async function createProduct(formData: FormData) {
 
   console.log(title, price, description, categoryId, images);
 
-  const newProduct = {
-    title: title,
-    price: Number(price),
-    description: description,
-    categoryId: Number(categoryId),
-    images: images,
-  };
-
-  console.log(newProduct);
-  //save to DB or make fetch
   const res = await fetch("https://api.escuelajs.co/api/v1/products", {
     method: "POST",
     headers: { "Content-Type": "Application/JSON" },
-    // body: JSON.stringify({ title, price, description, categoryId, images }),
-    body: JSON.stringify({ newProduct }),
+    body: JSON.stringify({ title, price, description, categoryId, images }),
   });
 
   if (!res.ok) {

@@ -10,3 +10,9 @@ export const sportsTable = pgTable("sports", {
 //Table description with type and characteristics.
 //npx drizzle-kit push - command for update DB
 //supabase - online database resource
+
+export const eventsTable = pgTable("events", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  name: varchar({ length: 255 }).notNull(),
+  description: varchar({ length: 255 }).notNull(),
+});

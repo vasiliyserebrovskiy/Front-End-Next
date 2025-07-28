@@ -10,7 +10,7 @@ export async function createProduct(formData: FormData) {
   const categoryId = formData.get("categoryId")?.toString();
   const images = [formData.get("image")?.toString()];
 
-  console.log(title, price, description, categoryId, images);
+  // console.log(title, price, description, categoryId, images);
 
   const res = await fetch("https://api.escuelajs.co/api/v1/products", {
     method: "POST",

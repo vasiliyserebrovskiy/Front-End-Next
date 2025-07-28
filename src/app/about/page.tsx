@@ -1,5 +1,5 @@
 export default async function About() {
-  const BASE_URL = process.env.BASE_URL;
+  // const BASE_URL = process.env.BASE_URL;
   // const res = await fetch(`${BASE_URL}/api/hello`);
   // const { message } = await res.json();
 

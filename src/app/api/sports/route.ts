@@ -9,7 +9,18 @@ const SportInsertSchema = z.object({
     .nonempty("Title must not be null")
     .min(3, "Minimal length is 3")
     .max(255, "Max length is 255"),
-  image: z.string().min(3, "Minimal length is 3").max(255, "Max length is 255"),
+  image: z.string().refine(
+    (val) => {
+      try {
+        new URL(val);
+        return true;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (err) {
+        return false;
+      }
+    },
+    { message: "Invalid URL of image" }
+  ),
   description: z
     .string()
     .min(10, "Minimal length is 10")
@@ -24,6 +35,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    console.log(process.env.DATABASE_URL);
     const body = await req.json();
     const { title, image, description } = SportInsertSchema.parse(body);
     const [sport] = await db
@@ -31,7 +43,7 @@ export async function POST(req: NextRequest) {
       .values({ title, image, description })
       .returning();
 
-    return NextResponse.json(sport);
+    return NextResponse.json(sport, { status: 201 });
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(

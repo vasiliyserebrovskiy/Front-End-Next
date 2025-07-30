@@ -31,3 +31,9 @@ export interface Product {
   categoryId: number;
   images: string[];
 }
+
+export interface Event {
+  id: number;
+  name: string;
+  description: string;
+}

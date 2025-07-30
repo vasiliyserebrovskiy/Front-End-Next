@@ -26,6 +26,9 @@ export default function NavBar() {
       <Link href={"/categories"} className="hover:text-amber-300">
         Categories
       </Link>
+      <Link href={"/events"} className="hover:text-amber-300">
+        Events
+      </Link>
       <Link href={"/profile"} className="hover:text-amber-300">
         Profile
       </Link>

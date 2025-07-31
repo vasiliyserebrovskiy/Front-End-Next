@@ -32,6 +32,15 @@ export default function NavBar() {
       <Link href={"/profile"} className="hover:text-amber-300">
         Profile
       </Link>
+      <Link href={"/todos"} className="hover:text-amber-300">
+        Todos
+      </Link>
+      <Link href={"/todos/create"} className="hover:text-amber-300">
+        Create todos
+      </Link>
+      <Link href={"/todos/server-component"} className="hover:text-amber-300">
+        Server Comonent
+      </Link>
       <AuthButton />
       <ThemeToggler />
     </nav>

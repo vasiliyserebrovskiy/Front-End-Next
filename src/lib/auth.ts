@@ -1,9 +1,10 @@
-// import { Account, AuthOptions, Profile, Session } from "next-auth";
-import { AuthOptions } from "next-auth";
+import { db } from "@/db";
+import { users } from "@/db/schema";
+import { Account, Profile, Session } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import GoogleProvider from "next-auth/providers/google";
-// import { JWT } from "next-auth/jwt";
 
-export const authOptions: AuthOptions = {
+export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -12,20 +13,57 @@ export const authOptions: AuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async jwt({ token, account, profile }) {
+    async jwt({
+      token,
+      account,
+      profile,
+    }: {
+      token: JWT;
+      account?: Account | null;
+      profile?: Profile | null;
+    }) {
       if (account && profile) {
         token.googleId = profile.sub;
+        const existing = await db.query.users.findFirst({
+          where: (u, { eq }) => eq(u.email, profile.email!),
+        });
+        if (existing) {
+          token.role = existing.role;
+        }
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session; token: JWT }) {
       if (token.googleId) {
         session.user = {
           ...session.user,
           googleId: token.googleId,
         };
       }
+      // may be this step is not nesessary
+      if (token.role) {
+        session.user.role = token.role;
+      }
       return session;
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async signIn({ user }: { user: any }) {
+      if (!user.email) {
+        return false;
+      }
+      const existing = await db.query.users.findFirst({
+        where: (u, { eq }) => eq(user.email, u.email),
+      });
+
+      if (!existing) {
+        await db.insert(users).values({
+          email: user.email,
+          name: user.name,
+          image: user.image,
+          role: "customer",
+        });
+      }
+      return true;
     },
   },
 };
